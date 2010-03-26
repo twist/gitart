@@ -16,13 +16,57 @@ my $offset_right = 1;
 
 
 
+my $position = (int($x/2) + ($x*int($y/2))) ;
 foreach $step (@steps)
 {
+        if ($step eq "00") #up and left
+        {
+                $position += $offset_up;
+                $position += $offset_left;
+        }
+        elsif ($step eq "01") #up and right
+        {
+                $position += $offset_up;
+                $position += $offset_right;
+        }
+        elsif ($step eq "10") #down and left
+        {
+                $position += $offset_down;
+                $position += $offset_left;
+        }
+        else #down and right
+        {
+                $position += $offset_down;
+                $position += $offset_right;
+        }
+        $field[$position] += 1;
+        print_field($x, $y, @field);
+        print "\n\n\n\n";
+        
 }
 
+print_field($x, $y, @field);
 
 
 
+
+
+
+
+sub print_field
+{
+        my ($width, $length, @field) = @_;
+        
+
+        for($j = 0; $j < $length; $j++) #j=y
+        {
+                for($i = 0; $i < $width; $i++) # i=x
+                {
+                        print $field[$i + ($width *($j)  )];
+                }
+                print "\n"
+        }
+}
 
 
 
