@@ -40,7 +40,6 @@ foreach $step (@steps)
                 $position += $offset_right;
         }
         $field[$position] += 1;
-        print_field($x, $y, @field);
         print "\n\n\n\n";
         
 }
@@ -62,14 +61,21 @@ sub print_field
         {
                 for($i = 0; $i < $width; $i++) # i=x
                 {
-                        print $field[$i + ($width *($j)  )];
+                        print ($field[$i + ($width *($j)  )]);
                 }
                 print "\n"
         }
 }
 
 
-
+sub map_value
+{
+        print "MAPVALUE";
+        my ($value) = @_;
+        %map = { "0", " ", "1",".","2","o","3","+","4","=","5","*","6","B","7","O","8","X","9","@","10","%","11","&","12","#","13","/","14","^","15","S", "16", "E" };
+        print $map{$value};
+        return $map{$value};
+}
 
 sub hex2bin_with_spaces
 {
