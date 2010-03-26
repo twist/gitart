@@ -1,3 +1,3 @@
 #!/bin/bash
 
-git log HEAD^..HEAD
+git log HEAD^..HEAD 

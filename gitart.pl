@@ -40,7 +40,6 @@ foreach $step (@steps)
                 $position += $offset_right;
         }
         $field[$position] += 1;
-        print "\n\n\n\n";
         
 }
 
