@@ -11,7 +11,7 @@ my $offset_up = $x;
 my $offset_down = ($x * -1);
 my $offset_left = -1;
 my $offset_right = 1;
-
+my $name = "gitart";
 @field = create_array_of_lenght($x*$y);
 
 
@@ -44,7 +44,7 @@ foreach $step (@steps)
         
 }
 
-print_field($x, $y, @field);
+print_field($name, $x, $y, @field);
 
 
 
@@ -54,17 +54,20 @@ print_field($x, $y, @field);
 
 sub print_field
 {
-        my ($width, $length, @field) = @_;
-        
-
+        my ($name, $width, $length, @field) = @_;
+       
+	print_name($name, $width);		
         for($j = 0; $j < $length; $j++) #j=y
         {
+		print "|";
                 for($i = 0; $i < $width; $i++) # i=x
                 {
                         print map_value($field[$i + ($width *($j)  )]);
                 }
+		print "|";
                 print "\n"
         }
+	print_name("", $x);
 }
 
 
@@ -74,6 +77,27 @@ sub map_value
         %map = ( "0", " ", "1",".","2","o","3","+","4","=","5","*","6","B","7","O","8","X","9","@","10","%","11","&","12","#","13","/","14","^","15","S", "16", "E" );
         return $map{$value};
 }
+
+sub print_name
+{
+	my ($name, $x) = @_;
+	$needed_characters = ($x) - length($name);
+	print "+";
+	for ($i = 0; $i <= $needed_characters; $i++)
+	{
+		if($i == (int($needed_characters/2)))
+		{
+			print $name;
+		}
+		else
+		{
+			print "-";
+		}
+	}
+	print "+\n";
+}
+		
+
 
 sub hex2bin_with_spaces
 {
