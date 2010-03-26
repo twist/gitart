@@ -4,7 +4,7 @@
 	------
 
 
-Recently i have read something about "ssh random art" and quite liked the id. 
+Recently i have read something about "ssh random art" and quite liked the idea. 
 The next thought was "what else uses hashes for fingerprinting something?", "git!".
 so here it is. git | random | art > do_some_art.
 
