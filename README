@@ -1,4 +1,42 @@
 
 
-usage
-./gitlog_last_commit.sh | ./hash_from_gitlog.pl | ./gitart.pl
+	GITART.pl
+	------
+
+
+Recently i have read something about "ssh random art" and quite liked the id. 
+The next thought was "what else uses hashes for fingerprinting something?", "git!".
+so here it is. git | random | art > do_some_art.
+
+
+Installation
+------------
+Drop all of the files in src to your ~/bin, and,
+a) if you have a vannila post-commit-hook replace it with the delivered one or
+b) if you have a custom post-comit-hook append the content of the delivered one to it. 
+
+thats it.
+Happy Commiting!
+
+
+
+Example:
+--------
+
+
+twist@some-host:~/projects/some_git_repo> git commit 
++-----gitart------+
+|          . .    |
+|         .   .   |
+|        . . . . .|
+|     . . . o . + |
+|      + . o   + =|
+|     o o =     o |
+|= .   + o o     .|
+| =   . o +       |
+|+ . . o +        |
++-----------------+
+[master 0c653eb] adasdas
+ 1 files changed, 1 insertions(+), 0 deletions(-)
+twist@some-host:~/projects/some_git_repo>
+
