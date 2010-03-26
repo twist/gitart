@@ -4,10 +4,16 @@
 	------
 
 
-Recently i have read something about "ssh random art" and quite liked the idea. 
+Recently i have read  about "ssh random art" and quite liked the idea. 
 The next thought was "what else uses hashes for fingerprinting something?", "git!".
 so here it is. git | random | art > do_some_art.
 
+Inspriration
+------------
+
+http://www.dirk-loss.de/sshvis/drunken_bishop.pdf
+or as html (thx google):
+http://google.com/search?q=cache:wolz9tZZI8EJ:www.dirk-loss.de/sshvis/drunken_bishop.pdf+drunken+bishop&cd=3&hl=de&ct=clnk
 
 Installation
 ------------
