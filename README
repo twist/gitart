@@ -8,7 +8,7 @@ Recently i have read  about "ssh random art" and quite liked the idea.
 The next thought was "what else uses hashes for fingerprinting something?", "git!".
 so here it is. git | random | art > do_some_art.
 
-Inspriration
+Inspiration
 ------------
 
 http://www.dirk-loss.de/sshvis/drunken_bishop.pdf
