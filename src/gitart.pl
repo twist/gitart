@@ -19,6 +19,7 @@ my $name = "gitart";
 my $position = (int($x/2) + ($x*int($y/2))) ;
 foreach $step (@steps)
 {
+        my $oldpos = $position;
         if ($step eq "00") #up and left
         {
                 $position += $offset_up;
@@ -38,6 +39,14 @@ foreach $step (@steps)
         {
                 $position += $offset_down;
                 $position += $offset_right;
+        }
+        if $position > ( $x * $y)
+        {
+                $position = $position-$oldpos; #"ring buffer"
+        }
+        elsif ($position < 0)
+        {
+            $position = ($x * $y) - ($oldpos - $position);
         }
         $field[$position] += 1;
         
