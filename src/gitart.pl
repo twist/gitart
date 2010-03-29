@@ -40,7 +40,7 @@ foreach $step (@steps)
                 $position += $offset_down;
                 $position += $offset_right;
         }
-        if $position > ( $x * $y)
+        if ($position > ( $x * $y))
         {
                 $position = $position-$oldpos; #"ring buffer"
         }
