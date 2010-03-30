@@ -1,58 +1,90 @@
 #!/usr/bin/perl
 
-$hash = <STDIN>;
-
-$bin_string =  hex2bin_with_spaces($hash);
-
-@steps = create_steps($bin_string) ;
-my $x = 17;
-my $y = 9;
-my $offset_up = $x;
-my $offset_down = ($x * -1);
-my $offset_left = -1;
-my $offset_right = 1;
-my $name = "gitart";
-@field = create_array_of_lenght($x*$y);
+#
+#	gitart.pl
+#
+#	bellee@webit.de
+#	2010
+#
+#	
+#	creates an ascii art image from a supplied hexadecimal hash.
+#
+#
+#
 
 
 
-my $position = (int($x/2) + ($x*int($y/2))) ;
-foreach $step (@steps)
+
+main();
+
+
+sub main()
 {
-        my $oldpos = $position;
-        if ($step eq "00") #up and left
-        {
-                $position += $offset_up;
-                $position += $offset_left;
-        }
-        elsif ($step eq "01") #up and right
-        {
-                $position += $offset_up;
-                $position += $offset_right;
-        }
-        elsif ($step eq "10") #down and left
-        {
-                $position += $offset_down;
-                $position += $offset_left;
-        }
-        else #down and right
-        {
-                $position += $offset_down;
-                $position += $offset_right;
-        }
-        if ($position > ( $x * $y))
-        {
-                $position = $position-$oldpos; #"ring buffer"
-        }
-        elsif ($position < 0)
-        {
-            $position = ($x * $y) - ($oldpos - $position);
-        }
-        $field[$position] += 1;
-        
-}
 
-print_field($name, $x, $y, @field);
+	my $arglen = @ARGV; 
+	if ($arglen == 1)
+	{
+		$hash = $ARGV[0];
+	}
+	else
+	{
+		$hash = <STDIN>;
+	}
+
+	$bin_string =  hex2bin_with_spaces($hash);
+	@steps = create_steps($bin_string) ;
+	
+
+	my $x = 17;
+	my $y = 9;
+	#i map the two dimensions onto an one-dimensional array, this is the basic math form moving on it
+	my $offset_up = $x;
+	my $offset_down = ($x * -1);
+	my $offset_left = -1;
+	my $offset_right = 1;
+	my $name = "gitart";
+
+
+	@field = create_array_of_lenght($x*$y);
+	my $position = (int($x/2) + ($x*int($y/2))) ;
+
+	foreach $step (@steps)
+	{
+		my $oldpos = $position;
+		if ($step eq "00") #up and left
+		{
+			$position += $offset_up;
+			$position += $offset_left;
+		}
+		elsif ($step eq "01") #up and right
+		{
+			$position += $offset_up;
+			$position += $offset_right;
+		}
+		elsif ($step eq "10") #down and left
+		{
+			$position += $offset_down;
+			$position += $offset_left;
+		}
+		else #down and right
+		{
+			$position += $offset_down;
+			$position += $offset_right;
+		}
+		if ($position > ( $x * $y))
+		{
+			$position = $position-$oldpos; #"ring buffer"
+		}
+		elsif ($position < 0)
+		{
+		    $position = ($x * $y) - ($oldpos - $position);
+		}
+		$field[$position] += 1;
+		
+	}
+
+	print_field($name, $x, $y, @field);
+}
 
 
 
@@ -75,7 +107,7 @@ sub print_field
 		print "|";
                 print "\n"
         }
-	print_name("", $x);
+	print_name("", $width);
 }
 
 
